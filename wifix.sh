@@ -166,7 +166,7 @@ function WifiDefault(){
         SSID="wifi";
         PASS=123456789;
         clear;
-        echo sudo create_ap $wireless_interface $ethernet_interface $SSID $PASS;
+       sudo create_ap $wireless_interface $ethernet_interface $SSID $PASS;
             if [ $? -eq 0 ]; then
             echo "AP Creado correctamente";
             echo "[ SSID:  ]  $SSID"
@@ -175,7 +175,7 @@ function WifiDefault(){
             else
             echo "A ocurrido un error, revise los logs en //tmp/wifix.log "
             # Guardar logs
-            echo sudo create_ap $wireless_interface $ethernet_interface $SSID $PASS > //tmp/wifix.logs;
+            sudo create_ap $wireless_interface $ethernet_interface $SSID $PASS > //tmp/wifix.logs;
             fi
 }
 # Validar Caracteristicas Password
@@ -208,7 +208,7 @@ function confirpass(){
     then
     ap_without_Internet_sharing;
     fi
-    echo sudo create_ap $wireless_interface $wireless_interface $SSID $PASS;
+    sudo create_ap $wireless_interface $wireless_interface $SSID $PASS;
     echo "AP Creado [SSID: $SSID] [Password: $PASS]";
     wifiUp;
 }
@@ -220,7 +220,7 @@ function Open_Wifi(){
     read SSID
     clear
     echo $SSID > //tmp/wifix.look;
-    echo "sudo create_ap $wireless_interface $ethernet_interface $SSID";
+    sudo create_ap $wireless_interface $ethernet_interface $SSID;
     wifiUp;
 }
 function  ap_without_Internet_sharing(){
